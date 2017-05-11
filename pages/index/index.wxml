@@ -1,0 +1,27 @@
+
+<!--index.wxml-->
+<view class="container">
+  <view bindtap="bindViewTap" class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+
+    <!--所有，待办，已完成的view-->
+
+    <!--输入框的view和添加按钮的view-->
+  </view>
+  <view class="todo">
+    <input class="inputview" placeholder="添加计划" value="{{todo}}" bindinput="todoInput" />
+    <button class="addBtn" bindtap="addtodo">添加</button>
+  </view>
+  <view class="todo-list" wx:for="{{todolist}}" wx:for-index="key">
+    <icon class="iconLeft" type="{{item.completed? 'success':'circle'}}" style=" margin-left: 20rpx " bindtap="iconLeft" id="{{key}}"></icon>
+    <text class="tvtodo">{{item.name}}</text>
+    <icon class="iconRight" type="cancel" style=" margin-right: 20rpx" bindtap="iconRight" id="{{key}}"></icon>
+  </view>
+  <view class="todo-footer">
+    <text class="tv-unfinished">{{unfinished}}个待办</text>
+    <button class="{{clickType == 1?'button-click':'btn-footer'}}" size="mini" bindtap="allToDo" hover-class="other-button-hover">所有</button>
+    <button class="{{clickType == 2?'button-click':'btn-footer'}}" size="mini" bindtap="unfinishedToDo" hover-class="other-button-hover">待办</button>
+    <button class="{{clickType == 3?'button-click':'btn-footer'}}" size="mini" bindtap="finishedToDo" hover-class="other-button-hover">已完成</button>
+  </view>
+</view>
